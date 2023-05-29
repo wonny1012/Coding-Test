@@ -11,21 +11,22 @@ func solution(_ n:Int, _ m:Int) -> [Int] {
         max = m
         min = n
     }
-
-    for i in 1...min {
-        if min%(min+1-i)==0 && max%(min+1-i)==0 {
-            common.append(min+1-i)
-            finalnumber[0] = min/(min+1-i)
-//            min = min
-//            max = max/(min+1-i)
-            finalnumber[1] = max/(min+1-i)
-            print(finalnumber)
+    
+    if max == 1 && min == 1 {
+        common = [1]
+        finalnumber = [1,1]
+    } else {
+        
+        for i in 2...min {
+            if min%(min+2-i)==0 && max%(min+2-i)==0 {
+                common.append(min+2-i)
+                finalnumber[0] = min/(min+2-i)
+                finalnumber[1] = max/(min+2-i)
+            }
         }
+        
     }
-
-
-
-    return [ common.reduce(1) { $0 * $1 },(m*n)/(common.reduce(1) { $0 * $1 })]
+    return [ common.max()!,(m*n)/(common.max()!)]
 }
 //func gcd(_ a: Int, _ b: Int) -> Int {
 //    if b == 0 {
@@ -41,4 +42,4 @@ func solution(_ n:Int, _ m:Int) -> [Int] {
 //    return [greatestCommonDivisor, leastCommonMultiple]
 //}
 
-solution(4,10)
+solution(6,30)
