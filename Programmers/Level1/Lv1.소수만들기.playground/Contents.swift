@@ -27,11 +27,3 @@ func solution(_ nums:[Int]) -> Int {
 }
 
 solution([1,2,7,6,4])
-
-var a = []
-
-print(a[0])
-
-
-a.remove(at: 0)
-print(a)

@@ -31,3 +31,5 @@ func solution(_ cards1: [String], _ cards2: [String], _ goal: [String]) -> Strin
         return "No"
     }
 }
+
+var a = [[2,4],[3,4]]
