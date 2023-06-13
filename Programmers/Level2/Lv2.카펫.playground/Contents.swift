@@ -22,3 +22,8 @@ func solution(_ brown:Int, _ yellow:Int) -> [Int] {
     }
     return answer
 }
+
+
+var a = 
+print(a)
+print(log2(a))
