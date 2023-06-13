@@ -1,5 +1,9 @@
 import Foundation
 
+var a = ["ss","aaa"]
+var b = a.last!.last
+
+
 func solution(_ s: String) -> Int {
     var stack: [Character] = []
     

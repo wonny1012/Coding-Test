@@ -1,3 +1,7 @@
+var a = "asdfsg"
+print(a.first!)
+print(a.last!)
+
 
 
 func solution(_ n:Int) -> Int {
