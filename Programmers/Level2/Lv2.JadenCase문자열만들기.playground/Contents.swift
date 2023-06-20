@@ -1,3 +1,5 @@
+import Foundation
+
 func solution(_ s: String) -> String {
     var answer = ""
     let words = s.components(separatedBy: " ")
@@ -5,9 +7,10 @@ func solution(_ s: String) -> String {
     for word in words {
         var convertedWord = ""
         let characters = Array(word.lowercased())
+        print(characters)
 
         for (index, char) in characters.enumerated() {
-            if index == 0 || characters[index - 1] == " " {
+            if index == 0 {
                 convertedWord += String(char).uppercased()
             } else {
                 convertedWord += String(char)
@@ -20,3 +23,5 @@ func solution(_ s: String) -> String {
     answer.removeLast()
     return answer
 }
+
+solution("3people unFollowed me")
