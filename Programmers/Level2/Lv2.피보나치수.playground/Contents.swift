@@ -1,29 +1,33 @@
-var a = "asdfsg"
-print(a.first!)
-print(a.last!)
 
-
-
-func solution(_ n:Int) -> Int {
-    var number = [0,1]
-    
-    for i in 2...n {
-        number.append(number[i-1]%1234567 + number[i-2]%1234567)
+//import Foundation
+//
+//func solution(_ n:Int) -> Int {
+//    var number = [0,1]
+//
+//    for i in 2...n {
+//        number.append(number[i-1]%1234567 + number[i-2]%1234567)
+//    }
+//
+//    return number[n]%1234567
+//}
+////
+//print( solution(5) )
+//print( solution(10) )
+//print( solution(20) )
+////
+//
+//
+func Fibonacci(_ num:Int) -> Int {
+    if num <= 0 {
+        return 0
+    } else if num == 1 {
+        return 1
+    } else {
+        return Fibonacci(num - 1) + Fibonacci(num - 2)
     }
-    
-    return number[n]%1234567
 }
-// func solution(_ n: Int) -> Int {
-//     var number = [0, 1]
-//     var result = 0
 
-//     for i in 2...n {
-//         let num1 = number[i-1] >= 1234567 ? number[i-1] % 1234567 : number[i-1]
-//         let num2 = number[i-2] >= 1234567 ? number[i-2] % 1234567 : number[i-2]
-//         number.append((num1 + num2) % 1234567)
-//     }
+print(Fibonacci(5))
+print(Fibonacci(10))
+print(Fibonacci(20))
 
-//     result = number[n]
-
-//     return result
-// }
