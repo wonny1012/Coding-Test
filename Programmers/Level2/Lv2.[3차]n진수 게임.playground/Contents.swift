@@ -22,3 +22,16 @@ func solution(_ n:Int, _ t:Int, _ m:Int, _ p:Int) -> String {
     
     return result
 }
+
+
+import Foundation
+
+func solution(_ fees:[Int], _ records:[String]) -> [Int] {
+    var arrayAll = [[String]]()
+    for i in records {
+        // components(seperatedBy : " ")
+        arrayAll.contains(i.components(separatedBy: " "))
+    }
+    print(arrayAll)
+    return []
+}
