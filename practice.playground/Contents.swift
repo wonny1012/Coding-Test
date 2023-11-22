@@ -1,6 +1,89 @@
 import Foundation
 
 
+func solution(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+    //트럭이 지나가는 큐
+    var queue = [(Int,Int)]()
+    //값을 세기 위한 기준값 (무게, count)
+    var weightsCount = truck_weights.map { ($0, 0) }
+    var totalWeight = 0
+    var count = 0
+    
+    while !weightsCount.isEmpty || !queue.isEmpty {
+        count += 1
+        
+        queue = queue.map { ($0.0 , $0.1 + 1) }
+    
+       if queue.isEmpty {
+           if !weightsCount.isEmpty {
+               totalWeight += weightsCount[0].0
+               queue.append(weightsCount.removeFirst())
+           }
+           
+       } else {
+           //무게에 따라 값을 추가할지 말지
+           //count가 길이와 같은 값이 되면 빼주고, 다음 값이 들어온다.
+           if queue[0].1 == bridge_length {
+               totalWeight -= queue[0].0
+               queue.removeFirst()
+//               if !weightsCount.isEmpty {
+//                   queue.append(weightsCount.removeFirst())
+//               }
+           }
+           if !weightsCount.isEmpty {
+               if !queue.isEmpty {
+                   if queue[0].0 < bridge_length - totalWeight {
+                           queue.append(weightsCount.removeFirst())
+                       }
+               }
+               }
+           
+       }
+    }
+    return count + 1
+}
+
+solution(2, 10, [7,4,5,6])
+
+let arr = ["one", "two", "three", "four", "one"]
+var counter = [String: Int]()
+
+arr.forEach { counter[$0, default: 0] += 1 }
+
+print(counter)
+
+arr.forEach {
+    counter[$0, default: 0] += 1
+}
+print(counter)
+var ste = 12345
+var serString = String(ste)
+print(Int(String(serString.map{ $0 }.sorted{ $0 > $1 }))!)
+var asdaa = ["*", "*", "*", "*", "*", "*", "*", "4", "4", "4", "4"]
+print(String(["*", "*", "*", "*", "*", "*", "*", "4", "4", "4", "4"]))
+
+var asd = Array(1...9)
+print(asd)
+var ten = 1234
+print(String(ten).map{ Int(String($0))!}.reduce(0) { $0 + $1 })
+
+func solution1(_ n:Int64) -> Int64 {
+    let t = Int64(sqrt(Double(n)))
+    return t * t == n ? (t+1)*(t+1) : -1
+}
+
+solution1(12)
+
+func solution2(_ phone_number:String) -> String {
+    var phonemapping = phone_number.map{ String($0) }
+    for i in 0..<phonemapping.count-4 {
+        phonemapping[i] = "*"
+    }
+    return phonemapping.joined()
+}
+
+print(solution2("01033334444"))
+
 func solution(_ N:Int, _ stages:[Int]) -> [Int] {
     var resultarray: [[Double]] = [ ]
     for num in 1...N  {
