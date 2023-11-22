@@ -1,15 +1,4 @@
 
-var a = [3,4]
-var b = [6,7]
-
-
-
-
-
-
-
-
-
 import Foundation
 
 func solution(_ record:[String]) -> [String] {
@@ -36,28 +25,3 @@ func solution(_ record:[String]) -> [String] {
 }
 
 
-
-func solution(_ files:[String]) -> [String] {
-    var HEAD = [String]()
-    var NUMBER = [Int]()
-    var tail = [String]()
-    var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    for i in files {
-        var mapping = i.map{ String($0) }
-        var start = ""
-        var num = ""
-        var count = 0
-        for i in mapping {
-            if !number.contains(String(i)) {
-                start += i
-            } else if number.contains(String(i)) {
-                num += i
-                count = Array(start).count
-            }
-        }
-        HEAD.append(start.map{ String($0) }[0...count-1].joined())
-        NUMBER.append(Int(num)!)
-    }
-    print(HEAD, NUMBER)
-    return []
-}
