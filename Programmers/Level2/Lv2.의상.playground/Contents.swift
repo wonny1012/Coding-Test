@@ -43,6 +43,3 @@ func solution(_ clothes:[[String]]) -> Int {
 //     return result-1
 //     }
 // }
-
-var a = [[2,3,4]]
-a.append(contentsOf: <#T##Sequence#>)
