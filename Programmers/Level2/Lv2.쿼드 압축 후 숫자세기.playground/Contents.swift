@@ -5,7 +5,7 @@ func solution(_ arr:[[Int]]) -> [Int] {
     //결과값 확인
     var result = [0, 0]
     
-    //제귀함수 돌릴 함수 
+    //제귀함수 돌릴 함수
     func compress(_ x: Int, _ y: Int, _ size: Int) {
         let firstElement = arr[x][y]
         var isCompressible = true

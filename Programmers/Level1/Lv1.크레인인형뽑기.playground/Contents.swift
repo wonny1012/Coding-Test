@@ -18,7 +18,7 @@ func solution(_ board:[[Int]], _ moves:[Int]) -> Int {
             }
         }
     }
-
+    
     var check = "T"
     while check == "T" && queue.count != 0 {
         var beforeNum = queue.count
