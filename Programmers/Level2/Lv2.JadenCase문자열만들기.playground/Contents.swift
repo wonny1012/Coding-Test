@@ -7,7 +7,6 @@ func solution(_ s: String) -> String {
     for word in words {
         var convertedWord = ""
         let characters = Array(word.lowercased())
-        print(characters)
 
         for (index, char) in characters.enumerated() {
             if index == 0 {
