@@ -1,82 +1,32 @@
 import Foundation
 
-//func solution(_ order:[Int]) -> Int {
-//    var result = 0
-//    var orderArray = order
-//    var queue = [Int]()
-//    var target = orderArray.removeFirst()
-//    for i in 1...order.count {
-//        if i == target {
-//            //값이 queue와 상관없이 찾아 진다면 행동
-//            result += 1
-//            if !orderArray.isEmpty {
-//                target = orderArray.removeFirst()
-//                continue
-//            } else {
-//                break
-//            }
-//        } else if !queue.isEmpty {
-//            if target == queue[queue.count-1] {
-//                result += 1
-//                queue.removeLast()
-//                target = orderArray.removeFirst()
-//                continue
-//                
-//            } else {
-//                queue.append(i)
-//                continue
-//            }
-//        } else {
-//            queue.append(i)
-//        }
-//    }
-//    print(queue)
-//    return result
-//    
-//    
-//}
-
-
-
-//[5,3,4,2,1]
-//for문 해서 값만큼 돌아가기
-//target을 for문으로 돌리기
-//target값이 number와 같은지 비교
-import Foundation
-
 func solution(_ order:[Int]) -> Int {
-    var queue = [Int]()
-    var num = 0
-    var result = 0
-    
-    if order.count == 1 {
-        return 1
-    }
-    
-    for target in order {
-        if target == num {
-            result += 1
-            continue
-        } else if target > num {
-            while target != num {
-                queue.append(num)
-                num += 1
-                if target == num {
-                    result += 1
-                    break
-                }
-            }
-        } else if target < num {
-            if queue[queue.count-1] == target {
-                result += 1
-                queue.removeLast()
-                continue
-            } else {
-                break
-            }
+    var count = 0
+    var currentOrderIndex = 0
+    var beltIndex = 1
+    var stack = [Int]() // 보조 컨테이너 벨트를 스택으로 사용
+
+    while currentOrderIndex < order.count {
+        if beltIndex <= order.count && beltIndex == order[currentOrderIndex] {
+            // 컨테이너 벨트의 상자가 현재 실어야 하는 순서의 상자인 경우
+            count += 1
+            currentOrderIndex += 1
+            beltIndex += 1
+        } else if stack.last == order[currentOrderIndex] {
+            // 보조 컨테이너 벨트(스택)의 맨 위 상자가 현재 실어야 하는 순서의 상자인 경우
+            stack.removeLast()
+            count += 1
+            currentOrderIndex += 1
+        } else if beltIndex <= order.count {
+            // 현재 컨테이너 벨트의 상자가 실어야 하는 순서의 상자가 아니면 스택에 추가
+            stack.append(beltIndex)
+            beltIndex += 1
+        } else {
+            // 더 이상 처리할 수 없는 상태
+            break
         }
     }
-    return result
+    return count
 }
 
 solution([4, 3, 1, 2, 5])
