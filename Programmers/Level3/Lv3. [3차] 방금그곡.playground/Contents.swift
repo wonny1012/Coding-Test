@@ -48,3 +48,10 @@ func solution(_ m:String, _ musicinfos:[String]) -> String {
     return resultWord.isEmpty ? "(None)" : resultWord
 }
 
+
+var numbers = "1 2 3 5 6"
+var nums = numbers.split(separator: " ")
+var nums2 = numbers.components(separatedBy: " ")
+print(nums)
+
+print(nums2)
