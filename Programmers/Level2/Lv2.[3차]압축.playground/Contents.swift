@@ -10,23 +10,23 @@ func solution(_ msg:String) -> [Int] {
             qeue.append(dict[first]!)
         } else {
             while !str.isEmpty {
-            var str2 = first + str[0]
-            if dict.keys.contains(str2) {
-                first = str2
-                str.remove(at:0)
-                if str.count == 0 {
+                var str2 = first + str[0]
+                if dict.keys.contains(str2) {
+                    first = str2
+                    str.remove(at:0)
+                    if str.count == 0 {
+                        qeue.append(dict[first]!)
+                    }
+                } else {
+                    dictnumber += 1
+                    dict[str2] = dictnumber
                     qeue.append(dict[first]!)
+                    break
                 }
-            } else {
-                dictnumber += 1
-                dict[str2] = dictnumber
-                qeue.append(dict[first]!)
-                break
             }
         }
-        }
     }
-
+    
     return qeue
 }
 
