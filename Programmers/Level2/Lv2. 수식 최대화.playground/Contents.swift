@@ -22,30 +22,34 @@ func evaluate(_ expression: String, _ priorities: [Character]) -> Int64 {
         } else {
             numbers.append(Int64(numBuffer)!)
             numBuffer = ""
-            
-            if priorities.contains(char) {
-                while !operators.isEmpty && priorities.contains(operators.last!) {
-                    let op = operators.removeLast()
-                    let operand2 = numbers.removeLast()
-                    let operand1 = numbers.removeLast()
-                    numbers.append(calculate(operand1, operand2, op))
-                }
-            }
-            
             operators.append(char)
+            // if priorities.contains(char) {
+            //     while !operators.isEmpty && priorities.contains(operators.last!) {
+            //         let op = operators.removeLast()
+            //         let operand2 = numbers.removeLast()
+            //         let operand1 = numbers.removeLast()
+            //         numbers.append(calculate(operand1, operand2, op))
+            //     }
+            // }
         }
     }
-    
     numbers.append(Int64(numBuffer)!)
-    
-    while !operators.isEmpty {
-        let op = operators.removeLast()
-        let operand2 = numbers.removeLast()
-        let operand1 = numbers.removeLast()
-        numbers.append(calculate(operand1, operand2, op))
+
+    for priority in priorities {
+        var index = 0
+        while index < operators.count {
+            if operators[index] == priority {
+                let operand1 = numbers.remove(at: index)
+                let operand2 = numbers.remove(at: index)
+                let op = operators.remove(at: index)
+                numbers.insert(calculate(operand1,operand2,op), at: index)
+            } else {
+                index += 1
+            }
+        }
     }
-    print(numbers)
-    return numbers.first!
+   
+    return abs(numbers.first!)
 }
 
 func solution(_ expression: String) -> Int64 {
