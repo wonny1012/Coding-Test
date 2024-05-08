@@ -49,53 +49,6 @@ import Foundation
 //----
 
 
-var numbers1 = "1 2 3 4 5 6"
-var nums = numbers1.split(separator: " ").map { Int($0)! }
-
-var number2 = "123456"
-var nums2 = number2.map{ Int(String($0))! }
-print(nums)
-print(nums2)
-//var nums = numbers1.split(seperator: " ").map{ Int(String($0))! }
-var nums1 = numbers1.map { Int(String($0))! }
-print(nums1)
-
-var string = "()[{}]"
-while string.contains("{}") || string.contains("[]") || string.contains("()") {
-    string = string.replacingOccurrences(of: "()", with: "")
-    string = string.replacingOccurrences(of: "[]", with: "")
-    string = string.replacingOccurrences(of: "{}", with: "")
-}
-print(string)
-
-
-
-func solution(_ s:String) -> Int {
-    var answer: Int = 0
-    var string = s
-    var turnString = s
-
-    for _ in 1...s.count {
-       while string.contains("{}") || string.contains("[]") || string.contains("()") {
-                string = string.replacingOccurrences(of: "{}", with: "")
-                string = string.replacingOccurrences(of: "()", with: "")
-                string = string.replacingOccurrences(of: "[]", with: "")
-                print(string)
-        }
-
-
-//        if string.count == 0 {
-//            answer += 1
-//        }
-//
-//        string = turnString
-//        string.append(string.removeFirst())
-//        turnString = string
-    }
-
-    return answer
-}
-
 
 func solution(_ s: String) -> Int {
     let n = s.count
@@ -138,5 +91,41 @@ func isValid(_ brackets: [Character]) -> Bool {
     return stack.isEmpty
 }
 
+
+func solution10(_ s: String) -> Int {
+    var answer = 0
+    let n = s.count
+    
+    for i in 0..<n {
+        var stack = [Character]()
+        var isValid = true
+        
+        for j in 0..<n {
+            let index = (i + j) % n
+            let c = s[s.index(s.startIndex, offsetBy: index)]
+            
+            if c == "(" || c == "[" || c == "{" {
+                stack.append(c)
+            } else {
+                if stack.isEmpty {
+                    isValid = false
+                    break
+                }
+                
+                let top = stack.removeLast()
+                if (c == ")" && top != "(") || (c == "}" && top != "{") || (c == "]" && top != "[") {
+                    isValid = false
+                    break
+                }
+            }
+        }
+        
+        if stack.isEmpty && isValid {
+            answer += 1
+        }
+    }
+    
+    return answer
+}
 
 solution("()[{}]")
