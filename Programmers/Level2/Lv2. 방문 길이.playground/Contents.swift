@@ -105,3 +105,8 @@ func solution(_ dirs:String) -> Int {
     }
     return (visitSet.count)/2
 }
+
+
+a = [2,4,5,6,8]
+a.removeFirst
+a.remove(at:0)
